@@ -1,0 +1,18 @@
+2018-06-08 20:21:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CARS ID[*] INT(11) PRIMARY KEY AUTO_INCREMENT,MAX_SPEED DOUBLE(11),MODEL VARCHAR(255),YEAR INT(4)); "; SQL statement:
+CREATE TABLE IF NOT EXISTS cars id INT(11) PRIMARY KEY AUTO_INCREMENT,max_speed DOUBLE(11),model VARCHAR(255),year INT(4)); [42000-197]
+2018-06-08 20:21:22 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARS" not found; SQL statement:
+INSERT INTO cars (MAX_SPEED, MODEL, YEAR) VALUES (?, ?, ?); [42102-197]
+2018-06-08 20:22:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CARS ID[*] INT(11) PRIMARY KEY AUTO_INCREMENT, MAX_SPEED DOUBLE(11), MODEL VARCHAR(255), YEAR INT(4)); "; SQL statement:
+CREATE TABLE IF NOT EXISTS cars id INT(11) PRIMARY KEY AUTO_INCREMENT, max_speed DOUBLE(11), model VARCHAR(255), year INT(4)); [42000-197]
+2018-06-08 20:22:26 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARS" not found; SQL statement:
+INSERT INTO cars (MAX_SPEED, MODEL, YEAR) VALUES (?, ?, ?); [42102-197]
+2018-06-08 20:25:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CARS ID[*] INT(11) PRIMARY KEY AUTO_INCREMENT,MAX_SPEED DOUBLE(11),MODEL VARCHAR(255),YEAR INT(4)); "; SQL statement:
+CREATE TABLE IF NOT EXISTS cars id INT(11) PRIMARY KEY AUTO_INCREMENT,max_speed DOUBLE(11),model VARCHAR(255),year INT(4)); [42000-197]
+2018-06-08 20:25:02 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARS" not found; SQL statement:
+INSERT INTO cars (max_speed, model, year) VALUES (?, ?, ?); [42102-197]
