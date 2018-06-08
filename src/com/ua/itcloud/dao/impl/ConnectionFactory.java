@@ -54,6 +54,15 @@ public class ConnectionFactory {
         }
     }
 
+    public void closeResultSet(ResultSet resultSet) {
+        if(resultSet != null) {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public synchronized static ConnectionFactory getInstance() {
         if(instance == null){

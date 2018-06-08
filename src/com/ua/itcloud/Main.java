@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         CarDAO carDAO = new CarDAOH2Impl();
 
-        carDAO.addCar(new Car("bmw", 2007, 220.0));
+//        carDAO.addCar(new Car("bmw", 2007, 220.0));
+        System.out.println(carDAO.getAllCars());
     }
 }
