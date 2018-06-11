@@ -1,5 +1,6 @@
 package com.ua.itcloud.dao;
 
+import com.ua.itcloud.exception.CarNotFoundException;
 import com.ua.itcloud.model.Car;
 
 import java.util.List;
@@ -17,5 +18,5 @@ public interface CarDAO {
 
     void updateCar(Car car);
 
-    void deleteCar(int carId);
+    void deleteCar(int carId) throws CarNotFoundException;
 }

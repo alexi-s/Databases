@@ -1,6 +1,7 @@
 package com.ua.itcloud.dao.impl;
 
 import com.ua.itcloud.dao.CarDAO;
+import com.ua.itcloud.exception.CarNotFoundException;
 import com.ua.itcloud.model.Car;
 
 import java.sql.*;
@@ -21,6 +22,8 @@ public class CarDAOH2Impl implements CarDAO {
             Car.YEAR + " INT(4)" +
             ");";
     private static final String INSERT_CAR = String.format("INSERT INTO cars (%s, %s, %s) VALUES (?, ?, ?);", Car.MAX_SPEED, Car.MODEL, Car.YEAR);
+    private static final String DELETE_CAR_BY_ID = String.format("DELETE FROM cars WHERE %s=?;", Car.ID);
+//    private static final String UPDATE_CAR_BY_ID = String.format("UPDATE cars SET WHERE %s=?;", Car.ID);
     public static final String GET_ALL_CARS = "SELECT * FROM cars";
 
     private Connection connection;
@@ -91,8 +94,22 @@ public class CarDAOH2Impl implements CarDAO {
     }
 
     @Override
-    public void deleteCar(int carId) {
+    public void deleteCar(int carId) throws CarNotFoundException {
+        try {
+            connection = getInstance().getConnection();
+            pst = connection.prepareStatement(DELETE_CAR_BY_ID);
+            pst.setInt(1, carId);
+            int result = pst.executeUpdate();
 
+            if(result == 0) {
+                throw new CarNotFoundException();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            getInstance().closePreparedStatement(pst);
+            getInstance().closeConnection(connection);
+        }
     }
 
     private void createTableIfNotExists() {
