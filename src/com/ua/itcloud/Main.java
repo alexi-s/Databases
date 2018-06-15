@@ -1,5 +1,6 @@
 package com.ua.itcloud;
 
+import com.ua.itcloud.controller.MainController;
 import com.ua.itcloud.dao.CarDAO;
 import com.ua.itcloud.dao.DriverDAO;
 import com.ua.itcloud.dao.impl.CarDAOH2Impl;
@@ -15,6 +16,7 @@ import com.ua.itcloud.model.Driver;
  */
 public class Main {
     public static void main(String[] args) {
+
         CarDAO carDAO = new CarDAOH2Impl();
 
 //        carDAO.addCar(new Car("bmw", 2007, 220.0));
@@ -25,7 +27,7 @@ public class Main {
 //        }
 //        System.out.println(carDAO.getAllCars());
 
-        DriverDAO driverDAO = new DriverDAOH2Impl();
+
 //        try {
 //            driverDAO.addDriver(new Driver("William", "Clinton", 23, "B"));
 //            driverDAO.addDriver(new Driver("George", "Bush", 32, "B"));
@@ -33,23 +35,15 @@ public class Main {
 //            System.out.println(e.getMessage());
 //        }
 
-        System.out.println("All drivers:\n" + driverDAO.getAllDrivers() + "\n");
+//        Driver driver = new Driver("William", "Clinton", 56, "B");
+//        driver.setId(1);
+//        System.out.println("\nNew driver:");
+//        System.out.println(driver);
 
-        try {
-            System.out.println(driverDAO.getDriverByLastName("Clinton"));
-        } catch (DriverNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
 
-        try {
-            System.out.println(driverDAO.getDriverByLastName("Clintons"));
-        } catch (DriverNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            System.out.println(driverDAO.getDriverById(8));
-        } catch (DriverNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+
+        MainController m = new MainController();
+        m.doWork();
+
     }
 }

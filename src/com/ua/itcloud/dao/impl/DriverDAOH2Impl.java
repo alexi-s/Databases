@@ -27,9 +27,9 @@ public class DriverDAOH2Impl implements DriverDAO {
     private static final String DELETE_DRIVER_BY_ID = String.format("DELETE FROM drivers WHERE %s=?;", Driver.ID);
     private static final String GET_DRIVER_BY_ID = String.format("SELECT * FROM drivers WHERE %s=?;", Driver.ID);
     private static final String GET_DRIVER_BY_LAST_NAME = String.format("SELECT * FROM drivers WHERE %s=?;", Driver.LAST_NAME);
-    private static final String UDDATE_DRIVER_BY_ID = String.format("UPDATE drivers SET %s=?, %s=?, %s=?, %s=? WHERE %s=?;",
+    private static final String UPDATE_DRIVER_BY_ID = String.format("UPDATE drivers SET %s=?, %s=?, %s=?, %s=? WHERE %s=?;",
             Driver.FIRST_NAME, Driver.LAST_NAME, Driver.EXPERIENCE, Driver.CATEGORY, Driver.ID);
-    public static final String GET_ALL_DRIVERS = "SELECT * FROM drivers";
+    private static final String GET_ALL_DRIVERS = "SELECT * FROM drivers";
 
     private Connection connection;
     private PreparedStatement pst = null;
@@ -144,15 +144,15 @@ public class DriverDAOH2Impl implements DriverDAO {
     public void updateDriver(Driver driver) {
         try {
             connection = getInstance().getConnection();
-            pst = connection.prepareStatement(UDDATE_DRIVER_BY_ID);
+            pst = connection.prepareStatement(UPDATE_DRIVER_BY_ID);
 
+            System.out.println(driver.getId());
 
-            pst.setInt(5, driver.getId());
             pst.setString(1, driver.getFirstName());
             pst.setString(2, driver.getLastName());
             pst.setInt(3, driver.getExperience());
             pst.setString(4, driver.getCategory());
-
+            pst.setInt(5, driver.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
